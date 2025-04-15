@@ -28,9 +28,9 @@ export default function FoodSelected() {
     return (
         <div className="h-screen w-full grid grid-cols-1 md:grid-cols-3 text-black p-7 gap-2">
 
-            <div className="border-1 border-black w-full px-15 py-5 justify-center flex flex-col">
+            <div className="w-full px-15 py-5 justify-center flex flex-col">
 
-                <h1 className="text-center text-sm md:text-2xl font-bold mb-5 border-b-1 border-black">Select quantity</h1>
+                <h1 className="text-center text-sm md:text-2xl font-bold mb-5">Select quantity</h1>
 
                 <div className="border-2 border-red-600 w-full h-80 rounded-lg"></div>
 
