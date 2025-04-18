@@ -8,10 +8,10 @@ import { CiHotdog, CiFries } from "react-icons/ci";
 import { LuCupSoda, LuDonut, LuIceCreamBowl } from "react-icons/lu";
 import { TbBottle } from "react-icons/tb";
 
-import CardComida from "../componentes/card/cardComida";
-import ListaComidas from "../componentes/listas/listaComidas";
+import CardComida from "@/componentes/card/cardComida";
+import ListaComidas from "@/componentes/listas/listaComidas";
 
-import { foodItems, drinkItems, dessertItems } from "../data/food";
+import { foodItems, drinkItems, dessertItems } from "@/data/food";
 
 export default function Home () {
     /*
