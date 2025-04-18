@@ -1,6 +1,5 @@
 "use client"
 
-import { FaInstagram, FaFacebookF, FaXTwitter, FaTiktok } from 'react-icons/fa6';
 import { useState } from "react";
 
 function onlyNumbers(str: string) {
@@ -27,17 +26,17 @@ export default function FoodSelected() {
     };
 
     return (
-        <div className="h-screen w-full grid grid-cols-1 md:grid-cols-3 text-black p-7 gap-5">
+        <div className="h-screen w-full grid grid-cols-1 md:grid-cols-3 text-black p-4 gap-5">
 
-            <div className="w-full px-15 py-5 justify-center flex flex-col">
+            <div className="w-full p-2 justify-center flex flex-col">
 
                 <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-lg text-white">Select quantity</h1>
 
-                <div className="w-full h-50 md:h-80">
+                <div className="w-full h-60 md:h-88">
                     <img className="w-full h-full rounded-lg" src="https://img.freepik.com/fotos-gratis/um-delicioso-hamburguer-no-estudio_23-2151846493.jpg?ga=GA1.1.663066825.1744765198&semt=ais_hybrid&w=740" alt="" />
                 </div>
 
-                <div className="flex justify-center pt-10 gap-1">
+                <div className="flex justify-center pt-2 gap-1">
                     <button className="w-10 rounded-lg bg-red-600 text-white font-bold border-red-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl">-</button>
                     <input 
                         placeholder="0"
@@ -51,7 +50,7 @@ export default function FoodSelected() {
 
             </div>
             
-            <div className="w-full px-15 justify-center flex flex-col">
+            <div className="w-full p-2 justify-center flex flex-col">
 
                 <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-md md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-lg text-white">Client Information</h1>
                 <div className="flex flex-col">
@@ -93,7 +92,7 @@ export default function FoodSelected() {
                 </div>
                 
             </div>
-            <div className="w-full px-15 justify-center flex flex-col">
+            <div className="w-full p-2 justify-center flex flex-col">
                 <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-lg text-white">Total Price</h1>
 
                 <div className="flex flex-col text-xs md:text-lg gap-2 bg-gray-200 p-4 rounded-lg mb-5">
@@ -107,13 +106,13 @@ export default function FoodSelected() {
                 <div className="flex flex-col w-full gap-4">
                     <input 
                         type="button" 
-                        value="Checkout" 
-                        className="bg-green-600 text-white font-bold h-10 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1"
+                        value="Add to cart" 
+                        className="bg-amber-400 text-white font-bold h-10 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1"
                     />
                     <input 
                         type="button" 
-                        value="Add to cart" 
-                        className="bg-amber-400 text-white font-bold h-10 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1"
+                        value="Checkout" 
+                        className="bg-green-600 text-white font-bold h-10 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1"
                     />
                     <input 
                         type="button" 
