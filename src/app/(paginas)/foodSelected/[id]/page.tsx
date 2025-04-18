@@ -54,7 +54,7 @@ export default function FoodSelected() {
     };
 
     return (
-        <div className="h-screen w-full grid grid-cols-1 md:grid-cols-3 text-black p-4 gap-5">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 text-black p-4 gap-5">
 
             <div className="w-full p-2 justify-center flex flex-col">
 
