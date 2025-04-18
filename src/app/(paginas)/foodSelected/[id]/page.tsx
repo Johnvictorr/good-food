@@ -1,6 +1,8 @@
 "use client"
 
-import { useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useParams } from 'next/navigation';
+import { foodItems, drinkItems, dessertItems } from "@/data/food"; 
 
 function onlyNumbers(str: string) {
     return str.replace(/[^0-9]/g, '');
@@ -11,6 +13,32 @@ function phoneNumberFormatter(str: string) {
 }
 
 export default function FoodSelected() {
+    const [ price, setPrice ] = useState(0);
+    const [ qtd, setQtd ] = useState(0);
+    const [ total, setTotal ] = useState(0);
+
+    const params = useParams();
+    
+    const id = params?.id;
+    const idNumber = parseInt(params?.id as string, 10);
+
+    const item = useMemo(() => {
+        const allItems = [...foodItems, ...drinkItems, ...dessertItems];
+        return allItems.find(food => food.id === idNumber);
+      }, [idNumber]);
+
+      console.log(item)
+
+    useEffect(() => {
+        if (item) {
+          const initialQtd = 1;
+          const delivery = 5;
+      
+          setPrice(item.price);
+          setQtd(initialQtd);
+          setTotal(item.price * initialQtd + delivery);
+        }
+      }, [item]);
 
     const [quantity, setQuantity] = useState('');
     const [phone, setPhone] = useState('');
@@ -96,11 +124,11 @@ export default function FoodSelected() {
                 <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-lg text-white">Total Price</h1>
 
                 <div className="flex flex-col text-xs md:text-lg gap-2 bg-gray-200 p-4 rounded-lg mb-5">
-                    <h1>Product Value: <span className="font-bold">R$ 29,90</span></h1>
+                    <h1>Product Value: <span className="font-bold">{`R$ ${item?.price}`}</span></h1>
                     <h1>Delivery Value: <span className="font-bold">R$ 5,00</span></h1>
                     <h1 className="mb-7">Additional: R$ <span className="font-bold">0,00</span></h1>
 
-                    <h1 className="font-bold mb-5">Total: R$ 34,90</h1>
+                    <h1 className="font-bold mb-5">Total: R$ {`${total}`}</h1>
                 </div>
 
                 <div className="flex flex-col w-full gap-4">
