@@ -8,7 +8,35 @@ import { CiHotdog, CiFries } from "react-icons/ci";
 import { LuCupSoda, LuDonut, LuIceCreamBowl } from "react-icons/lu";
 import { TbBottle } from "react-icons/tb";
 
+import CardComida from "../componentes/card/cardComida";
+import ListaComidas from "../componentes/listas/listaComidas";
+
+import { foodItems, drinkItems, dessertItems } from "../data/food";
+
 export default function Home () {
+    /*
+    ICONES:
+        // Comidas
+        BURGER: "PiHamburger",
+        HOT_DOG: "CiHotdog",
+        FRIES: "CiFries",
+        PIZZA: "PiPizza",
+
+        // Bebidas
+        SODA: "BsCupStraw",
+        BEER: "PiBeerBottle",
+        BOTTLE: "TbBottle",
+
+        // Sobremesas
+        ICE_CREAM: "PiIceCream",
+        SUNDAE: "LuIceCreamBowl",
+        MILKSHAKE: "LuCupSoda",
+        DONUT: "LuDonut"
+    */
+
+
+
+
     return (
         <div className="min-h-screen flex flex-col">
 
@@ -33,99 +61,11 @@ export default function Home () {
             </header>
 
             <main className="flex-1 grid grid-cols-1 md:grid-cols-3 px-2 py-2 text-white">
-                <section className="rounded-xl p-4">
-                    <h2 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-lg">Good-Foods</h2>
-                    <div className="grid grid-cols-1 gap-2">
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <img src="https://img.freepik.com/fotos-gratis/um-delicioso-hamburguer-no-estudio_23-2151846493.jpg?ga=GA1.1.663066825.1744765198&semt=ais_hybrid&w=740" className="w-10 h-10 bg-red-600 text-amber-400 rounded-full"/>
-                            <p>Cheese-Burguer</p>
-                            <p>R$ 15,90</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <PiHamburger className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Cheese-Bacon</p>
-                            <p>R$ 15,90</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <PiPizza className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Pepperoni Pizza</p>
-                            <p>R$ 23,90</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <CiHotdog className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Hot Dog</p>
-                            <p>R$ 10,90</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <CiFries className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Fries</p>
-                            <p>R$ 9,90</p>
-                        </div>
-                    </div>
-                </section>
+                <ListaComidas name="Good-Food" data={foodItems}/>
                 
-                <section className="rounded-xl p-4">
-                    <h2 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-lg">Good-Drinks</h2>
-                    <div className="grid grid-cols-1 gap-2">
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <PiBeerBottle className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Good-Soda</p>
-                            <p>R$ 5,99</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <PiBeerBottle className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Good-Cola</p>
-                            <p>R$ 5,99</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <PiBeerBottle className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Good-Fanta</p>
-                            <p>R$ 5,99</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <BsCupStraw className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Grape Juice</p>
-                            <p>R$ 3,90</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <TbBottle className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Water</p>
-                            <p>R$ 7,29</p>
-                        </div>
-                    </div>
-                </section>
+                <ListaComidas name="Good-Drinks" data={drinkItems}/>
                 
-                <section className="rounded-xl p-4">
-                    <h2 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-lg">Good-Desserts</h2>
-
-                    <div className="grid grid-cols-1 gap-2">
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <PiIceCream className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Ice Cream</p>
-                            <p>R$ 6,99</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <LuIceCreamBowl className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Sundae</p>
-                            <p>R$ 19,99</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <LuCupSoda className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Chocolate shake</p>
-                            <p>R$ 19,99</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <LuCupSoda className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Vanilla shake</p>
-                            <p>R$ 9,99</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <LuDonut className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Vanilla Donut</p>
-                            <p>R$ 11,59</p>
-                        </div>
-                    </div>
-                </section>
+                <ListaComidas name="Good-Desserts" data={dessertItems}/>
             </main>
 
             <footer className="bg-gray-200 text-black w-full justify-between border-t-1 border-black">
