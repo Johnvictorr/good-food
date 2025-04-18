@@ -40,13 +40,24 @@ export default function FoodSelected() {
         }
       }, [item]);
 
-    const [quantity, setQuantity] = useState('');
-    const [phone, setPhone] = useState('');
+    useEffect(() => {
+        if (item) {
+            const delivery = 5;
+            setTotal(item.price * qtd + delivery);
+        }
+    }, [item, qtd]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = onlyNumbers(e.target.value);
-        setQuantity(value);
+    const decrementQtd = () => {
+        if (qtd > 1) {
+            setQtd(prev => prev - 1);
+        }
     };
+
+     const incrementQtd = () => {
+            setQtd(prev => prev + 1);
+    };
+
+    const [phone, setPhone] = useState('');
 
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = phoneNumberFormatter(e.target.value);
@@ -65,15 +76,28 @@ export default function FoodSelected() {
                 </div>
 
                 <div className="flex justify-center pt-2 gap-1">
-                    <button className="w-10 rounded-lg bg-red-600 text-white font-bold border-red-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl">-</button>
-                    <input 
-                        placeholder="0"
-                        type="text"
-                        value={quantity}
-                        onChange={handleChange}
-                        className="w-20 py-1 text-center bg-gray-200 rounded-lg focus:outline-none"
+                    <button className="w-10 rounded-lg bg-red-600 text-white font-bold border-red-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl"
+                    onClick={decrementQtd}>-</button>
+
+                    <input
+                    type="text"
+                    value={qtd}
+                    onChange={(e) => {
+                        const value = e.target.value;
+                        const numericValue = parseInt(value.replace(/\D/g, ''), 10);
+
+                        if (!isNaN(numericValue) && numericValue >= 1) {
+                        setQtd(numericValue);
+                        } else {
+                        setQtd(1); // se for 0, vazio ou inválido, mantém no mínimo 1
+                        }
+                    }}
+                    className="w-10 h-10 rounded-lg bg-gray-200 text-center"
                     />
-                    <button className="w-10 rounded-lg bg-green-600 text-white font-bold border-green-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl">+</button>
+
+                    <button className="w-10 rounded-lg bg-green-600 text-white font-bold border-green-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl"
+                    onClick={incrementQtd}
+                    >+</button>
                 </div>
 
             </div>
