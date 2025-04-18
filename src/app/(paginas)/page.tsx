@@ -1,3 +1,5 @@
+"use client"
+
 import { FaSearch } from "react-icons/fa";
 import { PiHamburger, PiPizza, PiIceCream, PiBeerBottle } from "react-icons/pi";
 import { BsCupStraw } from "react-icons/bs";
@@ -35,7 +37,7 @@ export default function Home () {
                     <h2 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-lg">Good-Foods</h2>
                     <div className="grid grid-cols-1 gap-2">
                         <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <PiHamburger className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
+                            <img src="https://img.freepik.com/fotos-gratis/um-delicioso-hamburguer-no-estudio_23-2151846493.jpg?ga=GA1.1.663066825.1744765198&semt=ais_hybrid&w=740" className="w-10 h-10 bg-red-600 text-amber-400 rounded-full"/>
                             <p>Cheese-Burguer</p>
                             <p>R$ 15,90</p>
                         </div>
@@ -58,11 +60,6 @@ export default function Home () {
                             <CiFries className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
                             <p>Fries</p>
                             <p>R$ 9,90</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <CiFries className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Big Fries</p>
-                            <p>R$ 12,90</p>
                         </div>
                     </div>
                 </section>
@@ -95,11 +92,6 @@ export default function Home () {
                             <p>Water</p>
                             <p>R$ 7,29</p>
                         </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <TbBottle className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Sparkling Water</p>
-                            <p>R$ 8,29</p>
-                        </div>
                     </div>
                 </section>
                 
@@ -130,11 +122,6 @@ export default function Home () {
                         <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
                             <LuDonut className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
                             <p>Vanilla Donut</p>
-                            <p>R$ 11,59</p>
-                        </div>
-                        <div className="text-black text-xs md:text-lg justify-between items-center gap-10 flex bg-gray-200 hover:bg-white transition duration-100 ease-in-out cursor-pointer p-4 rounded-xl">
-                            <LuDonut className="w-10 h-10 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
-                            <p>Strawberry Donut</p>
                             <p>R$ 11,59</p>
                         </div>
                     </div>
