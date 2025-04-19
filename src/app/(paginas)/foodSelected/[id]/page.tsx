@@ -7,8 +7,6 @@ import { foodItems, drinkItems, dessertItems } from "@/data/food";
 import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
 
-import { toast } from "sonner"
-
 function phoneNumberFormatter(str: string) {
     return str.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
 }
@@ -61,8 +59,6 @@ export default function FoodSelected() {
     const handleAddToCart = () => {
         if (item) {
             console.log('adding to cart');
-
-            toast(`item ${item.name} adicionado ao carrinho`, { duration: 3000 });
             let qtdItens = items.length
             addItem({
                 idCart: qtdItens.toString(),
@@ -82,7 +78,7 @@ export default function FoodSelected() {
     };
 
     return (
-        <div className="justify-center items-center flex flex-col md:flex-row w-full text-black p-4 gap-5">
+        <div className="justify-center items-center flex flex-col md:flex-row w-full text-black p-4 gap-8">
 
             <div className="w-full md:w-1/3 justify-center flex flex-col">
 
@@ -109,7 +105,7 @@ export default function FoodSelected() {
                         setQtd(1);
                         }
                     }}
-                    className="w-10 h-10 rounded-lg bg-gray-300 text-center"
+                    className="w-10 h-10 rounded-lg bg-gray-200 text-center"
                     />
 
                     <button className="w-10 rounded-lg bg-green-600 text-white font-bold border-green-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl"
@@ -122,7 +118,7 @@ export default function FoodSelected() {
             <div className="w-full md:w-1/3 justify-center flex flex-col">
                 <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-base text-white">Informations</h1>
 
-                <div className="flex flex-col text-xs md:text-sm bg-gray-300 p-5 rounded-lg mb-5">
+                <div className="flex flex-col text-xs md:text-sm bg-gray-200 p-5 rounded-lg mb-5">
                     <h1>Product Value: <span className="font-bold">{`R$ ${item?.price}`}</span></h1>
                     <h1>Delivery Value: <span className="font-bold">R$ 5,00</span></h1>
 
@@ -130,7 +126,7 @@ export default function FoodSelected() {
                 </div>
 
                 <label htmlFor="observation">Description</label>
-                <textarea className="flex flex-col h-27 resize-none text-xs md:text-sm bg-gray-300 p-2 rounded-lg mb-5"/>
+                <textarea className="flex flex-col h-27 resize-none text-xs md:text-sm bg-gray-200 p-2 rounded-lg mb-5 focus:outline-none"/>
                     
                 <div className="flex flex-col w-full gap-4">
                     <input 
