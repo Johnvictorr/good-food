@@ -38,6 +38,7 @@ export default function ModalCart({ isOpen, onCLose }: Props) {
     useEffect(() => {
       if (isOpen) {
         setHasInteracted(false);
+        setCurrentStep(0);
       }
     }, [isOpen]);
 
