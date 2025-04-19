@@ -1,10 +1,12 @@
 import { create } from "zustand";
 
 type CartItem = {
-  id: string;
+  idCart: string;
+  idProduct: string;
   name: string;
   price: number;
   quantity: number;
+  discription: string;
 };
 
 type CartStore = {
@@ -22,7 +24,7 @@ export const useCartStore = create<CartStore>((set) => ({
     })),
   removeItem: (id) =>
     set((state) => ({
-      items: state.items.filter((i) => i.id !== id),
+      items: state.items.filter((i) => i.idCart !== id),
     })),
   clearCart: () => set({ items: [] }),
 }));

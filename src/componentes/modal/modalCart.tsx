@@ -1,4 +1,3 @@
-// /componentes/modal/modalCart.tsx
 "use client";
 
 import {
@@ -20,12 +19,19 @@ type Props = {
 };
 
 export default function ModalCart({ isOpen, onCLose }: Props) {
-  const { items } = useCartStore();
+  const { items, removeItem, clearCart } = useCartStore();
 
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
+  const finalizarPedido = () => {
+    clearCart();
+    onCLose();
+
+    console.log("pedido finalizado");
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onCLose()}>
@@ -44,6 +50,7 @@ export default function ModalCart({ isOpen, onCLose }: Props) {
                 name={item.name}
                 price={item.price}
                 quantity={item.quantity}
+                onRemove={() => removeItem(item.idCart)}
               />
             ))}
           </div>
@@ -63,7 +70,7 @@ export default function ModalCart({ isOpen, onCLose }: Props) {
               </div>
               <button
                 className="bg-red-600 hover:bg-red-700 text-white rounded-md py-2 px-4 text-sm transition"
-                onClick={() => alert("Finalizar pedido")}
+                onClick={finalizarPedido}
               >
                 Finalizar Pedido
               </button>

@@ -11,7 +11,7 @@ function phoneNumberFormatter(str: string) {
 }
 
 export default function FoodSelected() {
-    const { addItem } = useCartStore();
+    const { addItem, items } = useCartStore();
 
     const [ price, setPrice ] = useState(0);
     const [ qtd, setQtd ] = useState(0);
@@ -58,11 +58,14 @@ export default function FoodSelected() {
     const handleAddToCart = () => {
         if (item) {
             console.log('adding to cart');
+            let qtdItens = items.length
             addItem({
-                id: item.id.toString(),
+                idCart: qtdItens.toString(),
+                idProduct: item.id.toString(),
                 name: item.name,
                 price: item.price,
                 quantity: qtd,
+                discription: "descrição mocada"
             });
         }
     };
