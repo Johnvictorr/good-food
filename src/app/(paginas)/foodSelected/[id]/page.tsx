@@ -7,6 +7,8 @@ import { foodItems, drinkItems, dessertItems } from "@/data/food";
 import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
 
+import { toast } from "sonner"
+
 function phoneNumberFormatter(str: string) {
     return str.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
 }
@@ -59,6 +61,8 @@ export default function FoodSelected() {
     const handleAddToCart = () => {
         if (item) {
             console.log('adding to cart');
+
+            toast(`item ${item.name} adicionado ao carrinho`, { duration: 3000 });
             let qtdItens = items.length
             addItem({
                 idCart: qtdItens.toString(),

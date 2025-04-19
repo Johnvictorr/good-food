@@ -5,7 +5,8 @@ import "./globals.css";
 import Header from "@/componentes/header/header";
 import Footer from "@/componentes/footer/footer";
 
-import ModalCartWrapper from "@/componentes/modal/modalCartWraper"; // <-- novo wrapper
+import ModalCartWrapper from "@/componentes/modal/modalCartWraper";
+import { Toaster } from "@/shadcn/ui/sonner"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow">
           <ModalCartWrapper />
+          <Toaster  position="top-center" />
           {children}
         </main>
         <Footer />
