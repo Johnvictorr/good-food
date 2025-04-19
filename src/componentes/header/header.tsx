@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 import { PiHamburger } from "react-icons/pi";
 import { TiShoppingCart } from "react-icons/ti";
 
+import { useModalCartStore } from "@/store/modalCartStore";
 
 export default function Header(){
+    const { openModal } = useModalCartStore();
 
     return(
         <header className="flex items-center justify-between py-4 px-3 md:px-8 border-b-1 border-gray-200">
@@ -15,7 +19,12 @@ export default function Header(){
                 </div>
             </Link>
 
-            <TiShoppingCart className="w-15 h-15 bg-red-600 text-amber-400 p-1 rounded-full" size={10}/>
+            <button onClick={openModal}>
+                <TiShoppingCart
+                className="w-15 h-15 bg-red-600 text-amber-400 p-1 rounded-full"
+                size={10}
+                />
+            </button>
         </header>
     )
 }
