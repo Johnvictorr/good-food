@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@/shadcn/ui/dialog";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CartStep from "../cartSteps/cartStep";
 import AddressStep from "../cartSteps/addressStep";
 import ConfirmStep from "../cartSteps/confirmStep";
@@ -20,9 +20,26 @@ type Props = {
 
 export default function ModalCart({ isOpen, onCLose }: Props) {
   const [currentStep, setCurrentStep] = useState(0);
+  const [direction, setDirection] = useState<"forward" | "backward">("forward");
+  const [hasInteracted, setHasInteracted] = useState(false);
+  
+  const nextStep = () => {
+    setDirection("forward");
+    setHasInteracted(true);
+    setCurrentStep((prev) => prev + 1);
+  };
+  
+  const previousStep = () => {
+    setDirection("backward");
+    setHasInteracted(true);
+    setCurrentStep((prev) => prev - 1);
+  };
 
-  const nextStep = () => setCurrentStep((prev) => prev + 1);
-  const previousStep = () => setCurrentStep((prev) => prev - 1);
+    useEffect(() => {
+      if (isOpen) {
+        setHasInteracted(false);
+      }
+    }, [isOpen]);
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onCLose()}>
@@ -31,15 +48,15 @@ export default function ModalCart({ isOpen, onCLose }: Props) {
           <DialogTitle>Carrinho</DialogTitle>
         </DialogHeader>
 
-        <StepWrapper step={0} currentStep={currentStep}>
+        <StepWrapper step={0} currentStep={currentStep} direction={direction} animate={hasInteracted}>
           <CartStep nextStep={nextStep} />
         </StepWrapper>
 
-        <StepWrapper step={1} currentStep={currentStep}>
+        <StepWrapper step={1} currentStep={currentStep} direction={direction} animate={hasInteracted}>
           <AddressStep nextStep={nextStep} previousStep={previousStep} />
         </StepWrapper>
 
-        <StepWrapper step={2} currentStep={currentStep}>
+        <StepWrapper step={2} currentStep={currentStep} direction={direction} animate={hasInteracted}>
           <ConfirmStep previousStep={previousStep} onFinish={onCLose} />
         </StepWrapper>
 
