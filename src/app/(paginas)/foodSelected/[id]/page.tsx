@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import { foodItems, drinkItems, dessertItems } from "@/data/food"; 
 
 import { useCartStore } from "@/store/cartStore";
+import Link from "next/link";
 
 function phoneNumberFormatter(str: string) {
     return str.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
@@ -84,7 +85,7 @@ export default function FoodSelected() {
                 <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-base text-white">Select quantity</h1>
 
                 <div className="h-60 md:h-88">
-                    <img className="w-full h-full rounded-lg" src="https://img.freepik.com/fotos-gratis/um-delicioso-hamburguer-no-estudio_23-2151846493.jpg?ga=GA1.1.663066825.1744765198&semt=ais_hybrid&w=740" alt="" />
+                    <img className="w-full h-full rounded-lg" src="https://img.freepik.com/fotos-premium/varios-itens-de-fast-food-prontos-para-comer-capturados_961875-48057.jpg?ga=GA1.1.663066825.1744765198&semt=ais_hybrid&w=740" alt="" />
                 </div>
 
                 <div className="flex justify-center pt-3 gap-1">
@@ -134,11 +135,13 @@ export default function FoodSelected() {
                         value="Add to cart" 
                         className="bg-amber-400 text-white h-10 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1"
                     />
-                    <input 
-                        type="button" 
-                        value="Back to Home" 
-                        className="bg-gray-200 text-black h-10 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1"
-                    />
+                    <Link href={"/"} >
+                        <input 
+                            type="button" 
+                            value="Back to Home" 
+                            className="w-full bg-gray-200 text-black h-10 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1"
+                        />
+                    </Link>
                 </div>
             </div>
             
