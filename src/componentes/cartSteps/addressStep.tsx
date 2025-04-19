@@ -16,6 +16,8 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
   
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
+
+      nextStep();
       console.log("Endereço enviado:", form);
     };
 
@@ -84,7 +86,6 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
       <button
         type="submit"
         className="bg-green-600 hover:bg-green-700 text-white rounded-md py-2 px-4 text-sm font-medium transition"
-        onClick={nextStep}
       >
         Confirmar Endereço
       </button>
