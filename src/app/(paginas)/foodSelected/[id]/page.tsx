@@ -4,15 +4,15 @@ import { useMemo, useState, useEffect } from "react";
 import { useParams } from 'next/navigation';
 import { foodItems, drinkItems, dessertItems } from "@/data/food"; 
 
-function onlyNumbers(str: string) {
-    return str.replace(/[^0-9]/g, '');
-}
+import { useCartStore } from "@/store/cartStore";
 
 function phoneNumberFormatter(str: string) {
     return str.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
 }
 
 export default function FoodSelected() {
+    const { addItem } = useCartStore();
+
     const [ price, setPrice ] = useState(0);
     const [ qtd, setQtd ] = useState(0);
     const [ total, setTotal ] = useState(0);
@@ -26,8 +26,6 @@ export default function FoodSelected() {
         const allItems = [...foodItems, ...drinkItems, ...dessertItems];
         return allItems.find(food => food.id === idNumber);
       }, [idNumber]);
-
-      console.log(item)
 
     useEffect(() => {
         if (item) {
@@ -57,8 +55,19 @@ export default function FoodSelected() {
             setQtd(prev => prev + 1);
     };
 
-    const [phone, setPhone] = useState('');
+    const handleAddToCart = () => {
+        if (item) {
+            console.log('adding to cart');
+            addItem({
+                id: item.id.toString(),
+                name: item.name,
+                price: item.price,
+                quantity: qtd,
+            });
+        }
+    };
 
+    const [phone, setPhone] = useState('');
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = phoneNumberFormatter(e.target.value);
         setPhone(value);
@@ -89,7 +98,7 @@ export default function FoodSelected() {
                         if (!isNaN(numericValue) && numericValue >= 1) {
                         setQtd(numericValue);
                         } else {
-                        setQtd(1); // se for 0, vazio ou inválido, mantém no mínimo 1
+                        setQtd(1);
                         }
                     }}
                     className="w-10 h-10 rounded-lg bg-gray-200 text-center"
@@ -157,6 +166,7 @@ export default function FoodSelected() {
 
                 <div className="flex flex-col w-full gap-4">
                     <input 
+                        onClick={handleAddToCart}
                         type="button" 
                         value="Add to cart" 
                         className="bg-amber-400 text-white font-bold h-10 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1"
