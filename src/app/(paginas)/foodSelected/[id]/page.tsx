@@ -19,6 +19,7 @@ export default function FoodSelected() {
 
     const [ price, setPrice ] = useState(0);
     const [ qtd, setQtd ] = useState(0);
+    const [ discription, setDiscription ] = useState("");
     const [ total, setTotal ] = useState(0);
 
     const params = useParams();
@@ -69,7 +70,7 @@ export default function FoodSelected() {
                 name: item.name,
                 price: item.price,
                 quantity: qtd,
-                discription: "descrição mocada"
+                discription: discription
             });
 
             toast.success(`Item ${item.name} (${qtd}) added to cart`);
@@ -133,7 +134,7 @@ export default function FoodSelected() {
                 </div>
 
                 <label htmlFor="observation">Description</label>
-                <textarea className="flex flex-col h-27 resize-none text-xs md:text-sm bg-gray-200 p-2 rounded-lg mb-5 focus:outline-none"/>
+                <textarea className="flex flex-col h-27 resize-none text-xs md:text-sm bg-gray-200 p-2 rounded-lg mb-5 focus:outline-none" onChange={(e) => setDiscription(e.target.value)}/>
                     
                 <div className="flex flex-col w-full gap-4">
                     <input 

@@ -70,12 +70,12 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
 
       <div className="flex flex-col gap-1">
         <label htmlFor="endereco" className="text-sm font-medium">
-          N°
+          Address
         </label>
         <input
           name="endereco"
           type="text"
-          placeholder="Number of your Address"
+          placeholder="Your Address"
           className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           value={form.endereco}
           onChange={handleChange}

@@ -24,28 +24,28 @@ export default function ConfirmStep({ onFinish, previousStep }: Props) {
     const produtos = items
     .map(
       (item) =>
-        `• ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`
+        `• ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}\n  ${item.discription || ""}`
     )
-    .join("\n");
-
-    const mensagem = `
-    🛒 *New Order*
-    
-    📍 *Delivery Address:*
-    Name: ${form.name}
-    Phone: ${form.phone}
-    Adress: ${form.endereco}
-    CEP: ${form.cep}
-    
-    📦 *Product Order:*
-    ${produtos}
-
-    💵 *Delivery Fee:* R$ ${deliveryFee.toFixed(2)}
-    
-    💰 *Total:* R$ ${total.toFixed(2)}
-    
-    ✅ Send order to App
-        `.trim();
+    .join("\n\n");
+  
+  const mensagem = `
+  🛒 *New Order*
+  
+  📍 *Delivery Address:*
+  Name: ${form.name}
+  Phone: ${form.phone}
+  Adress: ${form.endereco}
+  CEP: ${form.cep}
+  
+  📦 *Product Order:*
+  ${produtos}
+  
+  💵 *Delivery Fee:* R$ ${deliveryFee.toFixed(2)}
+  
+  💰 *Total:* R$ ${total.toFixed(2)}
+  
+  ✅ Send order to App
+  `.trim();
 
     console.log("Finishing order:", pedido);
     const numeroRestaurante = "5583986230880";
