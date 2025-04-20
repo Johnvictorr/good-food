@@ -1,6 +1,12 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/componentes/header/header";
+import Footer from "@/componentes/footer/footer";
+
+import ModalCartWrapper from "@/componentes/modal/modalCartWraper";
+import ToastWrapper from "@/componentes/toast/toastWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,15 +25,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        {children}
+        <Header />
+        <main className="flex-grow">
+          <ModalCartWrapper />
+          <ToastWrapper />
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
