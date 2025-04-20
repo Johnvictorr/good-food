@@ -5,11 +5,16 @@ import { PiHamburger, PiShoppingCartSimple } from "react-icons/pi";
 
 import { useModalCartStore } from "@/store/modalCartStore";
 import SearchBar from "../inputs/searchBar";
+import { useCartStore } from "@/store/cartStore";
 
 import { foodItems, drinkItems, dessertItems } from "@/data/food"; // <- aqui
 
 export default function Header() {
   const { openModal } = useModalCartStore();
+  const totalQuantity = useCartStore((state) =>
+    state.items.reduce((acc, item) => acc + item.quantity, 0)
+  );
+  
 
   const allItems = [...foodItems, ...drinkItems, ...dessertItems]; // <- unificando os dados
 
@@ -37,6 +42,11 @@ export default function Header() {
         <span className="hidden md:block text-sm md:text-3xl text-white font-bold text-shadow-lg">
           C<span className="text-amber-400">A</span>RT
         </span>
+        {totalQuantity > 0 && (
+          <div className="flex items-center justify-center w-6 h-6 text-sm font-bold text-white bg-red-600 rounded-full">
+            {totalQuantity}
+          </div>
+        )}
       </button>
     </header>
   );
