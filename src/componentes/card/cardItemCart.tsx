@@ -15,7 +15,7 @@ type Props = {
         <div className="flex justify-end mb-2">
           <button
             onClick={onRemove}
-            className="text-gray-400 hover:text-red-500 transition"
+            className="text-gray-400 hover:text-red-600 hover:cursor-pointer transition"
             aria-label="Remover item"
           >
             <FiX size={18} />
@@ -25,7 +25,7 @@ type Props = {
         <div className="flex justify-between items-center">
           <div>
             <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
-            <p className="text-sm text-gray-500">Qtd: {quantity}</p>
+            <p className="text-sm text-gray-500">Quantity: {quantity}</p>
           </div>
     
           <div className="text-right">

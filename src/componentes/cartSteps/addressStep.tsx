@@ -7,28 +7,58 @@ type Props = {
   nextStep: () => void;
 };
 
+function formatPhoneNumber(value: string) {
+  const onlyNums = value.replace(/\D/g, "").slice(0, 11);
+  if (onlyNums.length < 3) return onlyNums;
+  if (onlyNums.length < 8) {
+    return `(${onlyNums.slice(0, 2)}) ${onlyNums.slice(2)}`;
+  }
+  return `(${onlyNums.slice(0, 2)}) ${onlyNums.slice(2, 7)}-${onlyNums.slice(7)}`;
+}
+
+function formatCep(value: string) {
+  const onlyNums = value.replace(/\D/g, "").slice(0, 8);
+  if (onlyNums.length <= 5) return onlyNums;
+  return `${onlyNums.slice(0, 5)}-${onlyNums.slice(5)}`;
+}
+
 export default function AddressStep({ previousStep, nextStep }: Props) {
-    const { form, setForm } = useAddressStore();
-  
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setForm({ [e.target.name]: e.target.value });
-    };
-  
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      console.log("Endereço enviado:", form);
-    };
+  const { form, setForm } = useAddressStore();
+  const [phone, setPhone] = useState('');
+  const [cep, setCep] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    nextStep();
+    console.log("Address Submitted:", form);
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setPhone(formatted);
+    setForm({ phone: formatted });
+  };
+
+  const handleCepChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatCep(e.target.value);
+    setCep(formatted);
+    setForm({ cep: formatted });
+  };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-gray-800">
       <div className="flex flex-col gap-1">
         <label htmlFor="name" className="text-sm font-medium">
-          Nome do cliente:
+          Customer Name
         </label>
         <input
           name="name"
           type="text"
-          placeholder="Nome completo"
+          placeholder="Full Name"
           className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           value={form.name}
           onChange={handleChange}
@@ -38,27 +68,42 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
 
       <div className="flex flex-col gap-1">
         <label htmlFor="phone" className="text-sm font-medium">
-          Telefone:
+          Phone
         </label>
         <input
           name="phone"
           type="text"
           placeholder="(00) 00000-0000"
           className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          value={form.phone}
-          onChange={handleChange}
+          value={phone}
+          onChange={handlePhoneChange}
+          required
+        />
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="cep" className="text-sm font-medium">
+          CEP
+        </label>
+        <input
+          name="cep"
+          type="text"
+          placeholder="00000-000"
+          className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          value={cep}
+          onChange={handleCepChange}
           required
         />
       </div>
 
       <div className="flex flex-col gap-1">
         <label htmlFor="endereco" className="text-sm font-medium">
-          Endereço:
+          Address
         </label>
         <input
           name="endereco"
           type="text"
-          placeholder="Rua, número, bairro"
+          placeholder="Your Address"
           className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           value={form.endereco}
           onChange={handleChange}
@@ -66,35 +111,19 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
         />
       </div>
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="cep" className="text-sm font-medium">
-          CEP:
-        </label>
-        <input
-          name="cep"
-          type="text"
-          placeholder="00000-000"
-          className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          value={form.cep}
-          onChange={handleChange}
-          required
-        />
-      </div>
-
       <button
         type="submit"
-        className="bg-green-600 hover:bg-green-700 text-white rounded-md py-2 px-4 text-sm font-medium transition"
-        onClick={nextStep}
+        className="bg-green-600 hover:cursor-pointer text-white rounded-md py-2 px-4 text-sm font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1"
       >
-        Confirmar Endereço
+        Confirm Address
       </button>
 
       <button
         type="button"
         onClick={previousStep}
-        className="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md py-2 px-4 text-sm font-medium transition"
+        className="bg-gray-200 hover:cursor-pointer text-black rounded-md py-2 px-4 text-sm font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1"
       >
-        Voltar
+        Back
       </button>
     </form>
   );

@@ -16,7 +16,7 @@ export default function CartStep({ nextStep }: Props) {
   return (
     <div className="flex flex-col gap-4">
       {items.length === 0 ? (
-        <p className="text-muted-foreground">Seu carrinho está vazio.</p>
+        <p className="text-muted-foreground">Your Cart is Empty.</p>
       ) : (
         <>
           <div className="max-h-[50vh] overflow-y-auto pr-2">
@@ -26,21 +26,22 @@ export default function CartStep({ nextStep }: Props) {
                 name={item.name}
                 price={item.price}
                 quantity={item.quantity}
-                onRemove={() => removeItem(item.idCart)}
+                onRemove={ () => removeItem(item.idCart)}
               />
             ))}
           </div>
 
-          <div className="flex justify-between text-sm text-gray-700">
-            <span>Total:</span>
-            <span className="font-semibold">R$ {total.toFixed(2)}</span>
+          <div className="flex flex-col gap-2 justify-between text-sm text-black">
+            <span>Delivery Fee: <span className="font-semibold">R$ 5,00</span></span>
+
+            <span>Total: <span className="font-semibold">R$ {total.toFixed(2)}</span></span>
           </div>
 
           <button
-            className="bg-red-600 hover:bg-red-700 text-white rounded-md py-2 px-4 text-sm transition"
+            className="bg-red-600 hover:cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-white rounded-md py-2 px-4 text-sm transition"
             onClick={nextStep}
           >
-            Finalizar Pedido
+            Finish Order
           </button>
         </>
       )}
