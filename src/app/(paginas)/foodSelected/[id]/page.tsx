@@ -90,7 +90,7 @@ export default function FoodSelected() {
                 <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-base text-white">{item?.name}</h1>
 
                 <div className="flex items-center justify-center">
-                    <Image className="w-69 h-69 rounded-full" src={"/fotoComida.png"} alt="Imagem" width={300} height={300}/>
+                    <Image className="w-69 h-69 rounded-full border-2 border-gray-300" src={item?.image || "/fotoComida.png"} alt="Imagem" width={300} height={300}/>
                 </div>
 
                 <div className="flex flex-col justify-center pt-3 gap-2">
