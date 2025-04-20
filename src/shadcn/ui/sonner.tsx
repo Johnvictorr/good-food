@@ -11,7 +11,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme={theme as ToasterProps["theme"]}
       toastOptions={{
         style: {
-          background: "red",
+          background: "rgb(22, 163, 74)",
           color: "white",
           border: "none"
         },

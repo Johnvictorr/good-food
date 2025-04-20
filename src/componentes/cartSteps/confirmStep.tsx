@@ -11,7 +11,8 @@ export default function ConfirmStep({ onFinish, previousStep }: Props) {
   const { items, clearCart } = useCartStore();
   const { form } = useAddressStore();
 
-  const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const deliveryFee = 5;
+  const total = items.reduce((acc, item) => acc + item.price * item.quantity + deliveryFee, 0);
 
   const handleConfirm = () => {
     const pedido = {
@@ -28,23 +29,25 @@ export default function ConfirmStep({ onFinish, previousStep }: Props) {
     .join("\n");
 
     const mensagem = `
-    🛒 *Novo Pedido*
+    🛒 *New Order*
     
-    📍 *Endereço de entrega:*
-    Nome: ${form.name}
-    Telefone: ${form.phone}
-    Endereço: ${form.endereco}
+    📍 *Delivery Address:*
+    Name: ${form.name}
+    Phone: ${form.phone}
+    Adress: ${form.endereco}
     CEP: ${form.cep}
     
-    📦 *Itens do Pedido:*
+    📦 *Product Order:*
     ${produtos}
+
+    💵 *Delivery Fee:* R$ ${deliveryFee.toFixed(2)}
     
     💰 *Total:* R$ ${total.toFixed(2)}
     
-    ✅ Enviado via App
+    ✅ Send order to App
         `.trim();
 
-    console.log("Pedido finalizado:", pedido);
+    console.log("Finishing order:", pedido);
     const numeroRestaurante = "5583986230880";
     const url = `https://wa.me/${numeroRestaurante}?text=${encodeURIComponent(mensagem)}`;
 
@@ -56,19 +59,19 @@ export default function ConfirmStep({ onFinish, previousStep }: Props) {
 
   return (
     <div className="flex flex-col gap-4 text-gray-800">
-      <h2 className="text-lg font-semibold">📍 Endereço de Entrega</h2>
+      <h2 className="text-lg font-semibold">📍 Delivery Address</h2>
       <div className="text-sm border rounded-md p-3 bg-gray-50">
-        <p><strong>Nome:</strong> {form.name}</p>
-        <p><strong>Telefone:</strong> {form.phone}</p>
-        <p><strong>Endereço:</strong> {form.endereco}</p>
+        <p><strong>Name:</strong> {form.name}</p>
+        <p><strong>Phone:</strong> {form.phone}</p>
+        <p><strong>Address:</strong> {form.endereco}</p>
         <p><strong>CEP:</strong> {form.cep}</p>
       </div>
 
-      <h2 className="text-lg font-semibold mt-4">🧾 Itens do Pedido</h2>
+      <h2 className="text-lg font-semibold mt-4">🧾 Order Items</h2>
       {items.length === 0 ? (
         <div className="flex justify-center py-6">
           <TiShoppingCart size={80} className="text-gray-300" />
-          <p className="text-muted-foreground">Carrinho vazio.</p>
+          <p className="text-muted-foreground">Empty Cart.</p>
         </div>
       ) : (
         <div className="border rounded-md p-3 bg-gray-50 max-h-40 overflow-y-auto text-sm space-y-2">
@@ -81,25 +84,30 @@ export default function ConfirmStep({ onFinish, previousStep }: Props) {
         </div>
       )}
 
+      <div className="flex justify-between items-center mt-2 text-sm font-semibold">
+        <span>Delivery Fee:</span>
+        <span className="text-green-600">R$ {deliveryFee.toFixed(2)}</span>
+      </div>
+
       <div className="flex justify-between items-center mt-2 text-sm font-semibold border-t pt-2">
         <span>Total:</span>
-        <span className="text-green-700">R$ {total.toFixed(2)}</span>
+        <span className="text-green-600">R$ {total.toFixed(2)}</span>
       </div>
 
       <button
         type="submit"
-        className="bg-green-600 hover:bg-green-700 text-white rounded-md py-2 px-4 text-sm font-medium transition"
+        className="bg-green-600 hover:cursor-pointer text-white rounded-md py-2 px-4 text-sm font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1"
         onClick={handleConfirm}
       >
-        Confirmar Pedido
+        Confirm Order
       </button>
 
       <button
         type="button"
         onClick={previousStep}
-        className="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md py-2 px-4 text-sm font-medium transition"
+        className="bg-gray-200 hover:cursor-pointer text-black rounded-md py-2 px-4 text-sm font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1"
       >
-        Voltar
+        Back
       </button>
     </div>
   );

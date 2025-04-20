@@ -66,8 +66,8 @@ function DialogContent({
         {children}
       <DialogPrimitive.Close asChild>
         <button
-          className="absolute top-3 right-3 text-red-600 hover:text-red-800 p-2"
-          aria-label="Fechar"
+          className="absolute top-3 right-3 text-red-600 hover:text-white hover:bg-red-600 transition duration-300 ease-in-out rounded-full hover:cursor-pointer p-2"
+          aria-label="Close"
         >
           <FiX size={20} />
         </button>

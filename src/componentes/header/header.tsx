@@ -34,20 +34,24 @@ export default function Header() {
         </div>
 
 
-      <button
-        className="flex items-center gap-3 md:pr-5 rounded-full bg-red-600 hover:shadow-md cursor-pointer shadow-gray-400 transition duration-300 ease-in-out"
-        onClick={openModal}
-      >
-        <PiShoppingCartSimple className="w-10 h-10 md:w-15 md:h-15 text-amber-400 p-1" size={10} />
-        <span className="hidden md:block text-sm md:text-3xl text-white font-bold text-shadow-lg">
-          C<span className="text-amber-400">A</span>RT
-        </span>
-        {totalQuantity > 0 && (
-          <div className="flex items-center justify-center w-6 h-6 text-sm font-bold text-white bg-red-600 rounded-full">
-            {totalQuantity}
+        <button
+          className="flex items-center gap-3 md:pr-5 rounded-full bg-red-600 hover:shadow-md cursor-pointer shadow-gray-400 transition duration-300 ease-in-out"
+          onClick={openModal}
+        >
+          <div className="relative w-10 h-10 md:w-15 md:h-15 flex items-center justify-center">
+            <PiShoppingCartSimple className="w-full h-full text-amber-400 p-1" />
+
+            {totalQuantity > 0 && (
+              <span className="absolute -right-1 inset-0 flex items-center justify-center text-xs font-bold text-white pointer-events-none">
+                {totalQuantity}
+              </span>
+            )}
           </div>
-        )}
-      </button>
+
+          <span className="hidden md:block text-sm md:text-3xl text-white font-bold text-shadow-lg">
+            C<span className="text-amber-400">A</span>RT
+          </span>
+        </button>
     </header>
   );
 }

@@ -46,7 +46,7 @@ export default function ModalCart({ isOpen, onCLose }: Props) {
     <Dialog open={isOpen} onOpenChange={(open) => !open && onCLose()}>
       <DialogContent className="w-96 max-h-[80vh] overflow-hidden flex flex-col">
         <DialogHeader className="text-gray-600">
-          <DialogTitle>Carrinho</DialogTitle>
+          <DialogTitle>Cart</DialogTitle>
         </DialogHeader>
 
         <StepWrapper step={0} currentStep={currentStep} direction={direction} animate={hasInteracted}>

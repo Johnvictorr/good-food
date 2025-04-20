@@ -24,13 +24,13 @@ export default function Footer() {
                 </div>
 
                 <div className="text-sm flex flex-wrap justify-center gap-5">
-                    <a href="#" className="hover:underline">Termos de Serviço</a>
-                    <a href="#" className="hover:underline">Política de Privacidade</a>
-                    <a href="#" className="hover:underline">Contato</a>
+                    <a href="#" className="hover:underline">Terms of Service</a>
+                    <a href="#" className="hover:underline">Privacy Policy</a>
+                    <a href="#" className="hover:underline">Contact</a>
                 </div>
 
                 <div className="text-xs text-center">
-                    &copy; {new Date().getFullYear()} Good-Food. Todos os direitos reservados.
+                    &copy; {new Date().getFullYear()} Good-Food. All Rights Reserved.
                 </div>
             </div>
         </footer>

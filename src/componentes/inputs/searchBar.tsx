@@ -67,7 +67,7 @@ export default function SearchBar({ data, onSearch, className }: SearchBarProps)
     <div ref={wrapperRef} className={`relative w-full ${className}`}>
       <div className="flex overflow-hidden rounded-full">
         <input
-          type="text"
+          type="search"
           placeholder="Search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}

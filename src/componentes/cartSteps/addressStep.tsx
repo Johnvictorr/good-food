@@ -18,19 +18,19 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
       e.preventDefault();
 
       nextStep();
-      console.log("Endereço enviado:", form);
+      console.log("Address Submitted:", form);
     };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-gray-800">
       <div className="flex flex-col gap-1">
         <label htmlFor="name" className="text-sm font-medium">
-          Nome do cliente:
+          Customer Name
         </label>
         <input
           name="name"
           type="text"
-          placeholder="Nome completo"
+          placeholder="Full Name"
           className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           value={form.name}
           onChange={handleChange}
@@ -40,7 +40,7 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
 
       <div className="flex flex-col gap-1">
         <label htmlFor="phone" className="text-sm font-medium">
-          Telefone:
+          Phone
         </label>
         <input
           name="phone"
@@ -52,25 +52,10 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
           required
         />
       </div>
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="endereco" className="text-sm font-medium">
-          Endereço:
-        </label>
-        <input
-          name="endereco"
-          type="text"
-          placeholder="Rua, número, bairro"
-          className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          value={form.endereco}
-          onChange={handleChange}
-          required
-        />
-      </div>
-
+      
       <div className="flex flex-col gap-1">
         <label htmlFor="cep" className="text-sm font-medium">
-          CEP:
+          CEP
         </label>
         <input
           name="cep"
@@ -83,19 +68,35 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
         />
       </div>
 
+      <div className="flex flex-col gap-1">
+        <label htmlFor="endereco" className="text-sm font-medium">
+          N°
+        </label>
+        <input
+          name="endereco"
+          type="text"
+          placeholder="Number of your Address"
+          className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          value={form.endereco}
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+
       <button
         type="submit"
-        className="bg-green-600 hover:bg-green-700 text-white rounded-md py-2 px-4 text-sm font-medium transition"
+        className="bg-green-600 hover:cursor-pointer text-white rounded-md py-2 px-4 text-sm font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1"
       >
-        Confirmar Endereço
+        Confirm Address
       </button>
 
       <button
         type="button"
         onClick={previousStep}
-        className="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md py-2 px-4 text-sm font-medium transition"
+        className="bg-gray-200 hover:cursor-pointer text-black rounded-md py-2 px-4 text-sm font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1"
       >
-        Voltar
+        Back
       </button>
     </form>
   );

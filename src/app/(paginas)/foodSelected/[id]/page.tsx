@@ -6,6 +6,7 @@ import { foodItems, drinkItems, dessertItems } from "@/data/food";
 
 import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
+import Image from "next/image";
 
 import { toast } from "sonner";
 
@@ -71,7 +72,7 @@ export default function FoodSelected() {
                 discription: "descrição mocada"
             });
 
-            toast.success(`item ${item.name} adicionado ao carrinho`);
+            toast.success(`Item ${item.name} (${qtd}) added to cart`);
         }
     };
 
@@ -86,35 +87,38 @@ export default function FoodSelected() {
 
             <div className="w-full md:w-1/3 justify-center flex flex-col">
 
-                <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-base text-white">Select quantity</h1>
+                <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-base text-white">{item?.name}</h1>
 
-                <div className="h-60 md:h-88">
-                    <img className="w-full h-full rounded-lg" src="https://img.freepik.com/fotos-premium/varios-itens-de-fast-food-prontos-para-comer-capturados_961875-48057.jpg?ga=GA1.1.663066825.1744765198&semt=ais_hybrid&w=740" alt="" />
+                <div className="flex items-center justify-center">
+                    <Image className="w-69 h-69 rounded-full" src={"/fotoComida.png"} alt="Imagem" width={300} height={300}/>
                 </div>
 
-                <div className="flex justify-center pt-3 gap-1">
-                    <button className="w-10 rounded-lg bg-red-600 text-white font-bold border-red-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl"
-                    onClick={decrementQtd}>-</button>
+                <div className="flex flex-col justify-center pt-3 gap-2">
+                    <p className="text-sm md:text-lg opacity-60 font-bold text-center">Quantity:</p>
+                    <div className="flex justify-center gap-1">
+                        <button className="w-10 rounded-lg bg-red-600 text-white font-bold border-red-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl"
+                        onClick={decrementQtd}>-</button>
 
-                    <input
-                    type="text"
-                    value={qtd}
-                    onChange={(e) => {
-                        const value = e.target.value;
-                        const numericValue = parseInt(value.replace(/\D/g, ''), 10);
+                        <input
+                        type="text"
+                        value={qtd}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            const numericValue = parseInt(value.replace(/\D/g, ''), 10);
 
-                        if (!isNaN(numericValue) && numericValue >= 1) {
-                        setQtd(numericValue);
-                        } else {
-                        setQtd(1);
-                        }
-                    }}
-                    className="w-10 h-10 rounded-lg bg-gray-200 text-center"
-                    />
+                            if (!isNaN(numericValue) && numericValue >= 1) {
+                            setQtd(numericValue);
+                            } else {
+                            setQtd(1);
+                            }
+                        }}
+                        className="w-10 h-10 rounded-lg bg-gray-200 text-center"
+                        />
 
-                    <button className="w-10 rounded-lg bg-green-600 text-white font-bold border-green-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl"
-                    onClick={incrementQtd}
-                    >+</button>
+                        <button className="w-10 rounded-lg bg-green-600 text-white font-bold border-green-500 cursor-pointer transition-transform duration-300 ease-in-out hover:-translate-y-1 text-xl"
+                        onClick={incrementQtd}
+                        >+</button>
+                    </div>
                 </div>
 
             </div>
@@ -122,11 +126,10 @@ export default function FoodSelected() {
             <div className="w-full md:w-1/3 justify-center flex flex-col">
                 <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-base text-white">Informations</h1>
 
-                <div className="flex flex-col text-xs md:text-sm bg-gray-200 p-5 rounded-lg mb-5">
+                <div className="flex flex-col text-xs md:text-sm bg-gray-200 p-5 rounded-lg mb-5 gap-5">
                     <h1>Product Value: <span className="font-bold">{`R$ ${item?.price}`}</span></h1>
-                    <h1>Delivery Value: <span className="font-bold">R$ 5,00</span></h1>
 
-                    <h1 className="font-bold my-5">Total: R$ {`${total.toFixed(2)}`}</h1>
+                    <h1> Total: <span className="font-bold">{`R$ ${total.toFixed(2)}`}</span></h1>
                 </div>
 
                 <label htmlFor="observation">Description</label>
