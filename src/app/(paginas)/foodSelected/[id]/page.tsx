@@ -22,7 +22,6 @@ export default function FoodSelected() {
 
     const params = useParams();
     
-    const id = params?.id;
     const idNumber = parseInt(params?.id as string, 10);
 
     const item = useMemo(() => {
@@ -37,7 +36,7 @@ export default function FoodSelected() {
       
           setPrice(item.price);
           setQtd(initialQtd);
-          setTotal(item.price * initialQtd + delivery);
+          setTotal(price * initialQtd + delivery);
         }
       }, [item]);
 
@@ -61,7 +60,7 @@ export default function FoodSelected() {
     const handleAddToCart = () => {
         if (item) {
             console.log('adding to cart');
-            let qtdItens = items.length
+            const  qtdItens = items.length
             addItem({
                 idCart: qtdItens.toString(),
                 idProduct: item.id.toString(),
