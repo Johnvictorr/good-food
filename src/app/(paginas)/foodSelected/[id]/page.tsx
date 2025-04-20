@@ -7,6 +7,8 @@ import { foodItems, drinkItems, dessertItems } from "@/data/food";
 import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
 
+import { toast } from "sonner";
+
 function phoneNumberFormatter(str: string) {
     return str.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
 }
@@ -68,6 +70,8 @@ export default function FoodSelected() {
                 quantity: qtd,
                 discription: "descrição mocada"
             });
+
+            toast.success(`item ${item.name} adicionado ao carrinho`);
         }
     };
 
