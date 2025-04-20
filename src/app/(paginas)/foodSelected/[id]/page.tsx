@@ -10,9 +10,7 @@ import Image from "next/image";
 
 import { toast } from "sonner";
 
-function phoneNumberFormatter(str: string) {
-    return str.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-}
+
 
 export default function FoodSelected() {
     const { addItem, items } = useCartStore();
@@ -75,12 +73,6 @@ export default function FoodSelected() {
 
             toast.success(`Item ${item.name} (${qtd}) added to cart`);
         }
-    };
-
-    const [phone, setPhone] = useState('');
-    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = phoneNumberFormatter(e.target.value);
-        setPhone(value);
     };
 
     return (
