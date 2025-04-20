@@ -6,7 +6,7 @@ import Header from "@/componentes/header/header";
 import Footer from "@/componentes/footer/footer";
 
 import ModalCartWrapper from "@/componentes/modal/modalCartWraper";
-import { Toaster } from "@/shadcn/ui/sonner"
+import ToastWrapper from "@/componentes/toast/toastWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +36,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow">
           <ModalCartWrapper />
-          <Toaster  position="top-center" />
+          <ToastWrapper />
           {children}
         </main>
         <Footer />
