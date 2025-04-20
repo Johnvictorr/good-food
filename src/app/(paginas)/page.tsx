@@ -1,6 +1,5 @@
 "use client"
 
-import CardComida from "@/componentes/card/cardComida";
 import ListaComidas from "@/componentes/listas/listaComidas";
 
 import { foodItems, drinkItems, dessertItems } from "@/data/food";
