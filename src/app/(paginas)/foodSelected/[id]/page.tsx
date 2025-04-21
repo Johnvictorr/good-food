@@ -117,7 +117,7 @@ export default function FoodSelected() {
                 <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-base text-white">Informations</h1>
 
                 <div className="flex flex-col text-xs md:text-sm bg-gray-200 p-5 rounded-lg mb-5 gap-5">
-                    <h1>Product Value: <span className="font-bold">{`R$ ${item?.price}`}</span></h1>
+                    <h1>Product Value: <span className="font-bold">{`R$ ${item?.price.toFixed(2)}`}</span></h1>
 
                     <h1> Total: <span className="font-bold">{`R$ ${total.toFixed(2)}`}</span></h1>
                 </div>

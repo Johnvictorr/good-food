@@ -61,6 +61,7 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
           className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           value={form.name}
           onChange={handleChange}
+          minLength={3}
           required
         />
       </div>
@@ -76,6 +77,8 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
           className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           value={phone}
           onChange={handlePhoneChange}
+          minLength={14}
+          maxLength={14}
           required
         />
       </div>
@@ -91,6 +94,8 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
           className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           value={cep}
           onChange={handleCepChange}
+          minLength={9}
+          maxLength={9}
           required
         />
       </div>
@@ -106,6 +111,7 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
           className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           value={form.endereco}
           onChange={handleChange}
+          minLength={4}
           required
         />
       </div>
