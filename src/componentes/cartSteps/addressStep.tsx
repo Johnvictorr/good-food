@@ -23,8 +23,8 @@ function formatCep(value: string) {
 
 export default function AddressStep({ previousStep, nextStep }: Props) {
   const { form, setForm } = useAddressStore();
-  const [phone, setPhone] = useState('');
-  const [cep, setCep] = useState('');
+  const [phone, setPhone] = useState(form.phone);
+  const [cep, setCep] = useState(form.cep);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ [e.target.name]: e.target.value });
