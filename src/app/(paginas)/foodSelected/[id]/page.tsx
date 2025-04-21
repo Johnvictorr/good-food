@@ -32,17 +32,15 @@ export default function FoodSelected() {
     useEffect(() => {
         if (item) {
           const initialQtd = 1;
-          const delivery = 5;
       
           setPrice(item.price);
           setQtd(initialQtd);
-          setTotal(price * initialQtd + delivery);
+          setTotal(price * initialQtd);
         }
       }, [item]);
 
     useEffect(() => {
         if (item) {
-            const delivery = 5;
             setTotal(item.price * qtd);
         }
     }, [item, qtd]);
