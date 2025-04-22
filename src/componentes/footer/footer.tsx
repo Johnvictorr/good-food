@@ -6,7 +6,7 @@ export default function Footer() {
 
     return(
         <footer className="bg-gray-200 text-black w-full justify-between">
-            <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-around items-center gap-4">
                 
                 <div className="flex gap-4 text-xl">
                     <a href="#" aria-label="Instagram" className="hover:text-red-600 transition">

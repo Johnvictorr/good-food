@@ -65,7 +65,7 @@ export default function SearchBar({ data, onSearch, className }: SearchBarProps)
 
   return (
     <div ref={wrapperRef} className={`relative w-full ${className}`}>
-      <div className="flex overflow-hidden rounded-full">
+      <div className="flex overflow-hidden rounded-full shadow-md">
         <input
           type="search"
           placeholder="Search"
@@ -76,10 +76,10 @@ export default function SearchBar({ data, onSearch, className }: SearchBarProps)
               setShowDropdown(true);
             }
           }}
-          className="w-full rounded-l-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 text-black focus:outline-none"
+          className="w-full rounded-l-full px-3 md:px-4 py-2 md:py-3 border border-r-0 border-gray-300 text-black focus:outline-none"
         />
         <button
-          className="rounded-r-full px-3 md:px-4 cursor-pointer bg-red-600 text-white hover:text-red-600 hover:bg-white border border-l-0 border-gray-300 transition duration-100 ease-in-out"
+          className="rounded-r-full px-3 md:px-4 cursor-pointer text-red-600 hover:text-white hover:bg-red-600 border border-l-0 border-gray-300 transition duration-300 ease-in-out"
         >
           <FaSearch size={15} />
         </button>
