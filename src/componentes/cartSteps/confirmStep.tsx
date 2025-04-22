@@ -74,7 +74,7 @@ export default function ConfirmStep({ onFinish, previousStep }: Props) {
           <p className="text-muted-foreground">Empty Cart.</p>
         </div>
       ) : (
-        <div className="border rounded-md p-3 bg-gray-50 max-h-40 overflow-y-auto text-sm space-y-2">
+        <div className="border rounded-md p-2 bg-gray-50 max-h-[15vh] overflow-y-auto text-xs space-y-1">
           {items.map((item, idx) => (
             <div key={idx} className="flex justify-between">
               <span>{item.quantity}x {item.name}</span>
@@ -96,10 +96,10 @@ export default function ConfirmStep({ onFinish, previousStep }: Props) {
 
       <button
         type="submit"
-        className="bg-green-600 hover:cursor-pointer text-white rounded-md py-2 px-4 text-sm font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1"
+        className="bg-red-600 hover:cursor-pointer text-white rounded-md py-2 px-4 text-sm font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1"
         onClick={handleConfirm}
       >
-        Confirm Order
+        Finish Order
       </button>
 
       <button
