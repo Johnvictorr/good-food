@@ -44,24 +44,26 @@ export default function ModalCart({ isOpen, onCLose }: Props) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onCLose()}>
-      <DialogContent className="w-96 max-h-[80vh] overflow-hidden flex flex-col">
+      <DialogContent className="w-sm max-w-md max-h-screen h-auto flex flex-col overflow-y-auto ">
         <DialogHeader className="text-gray-600">
           <DialogTitle>Cart</DialogTitle>
         </DialogHeader>
 
-        <StepWrapper step={0} currentStep={currentStep} direction={direction} animate={hasInteracted}>
-          <CartStep nextStep={nextStep} />
-        </StepWrapper>
+        <div className="flex-1 overflow-y-auto scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none]">
+          <StepWrapper step={0} currentStep={currentStep} direction={direction} animate={hasInteracted}>
+            <CartStep nextStep={nextStep} />
+          </StepWrapper>
 
-        <StepWrapper step={1} currentStep={currentStep} direction={direction} animate={hasInteracted}>
-          <AddressStep nextStep={nextStep} previousStep={previousStep} />
-        </StepWrapper>
+          <StepWrapper step={1} currentStep={currentStep} direction={direction} animate={hasInteracted}>
+            <AddressStep nextStep={nextStep} previousStep={previousStep} />
+          </StepWrapper>
 
-        <StepWrapper step={2} currentStep={currentStep} direction={direction} animate={hasInteracted}>
-          <ConfirmStep previousStep={previousStep} onFinish={onCLose} />
-        </StepWrapper>
-
+          <StepWrapper step={2} currentStep={currentStep} direction={direction} animate={hasInteracted}>
+            <ConfirmStep previousStep={previousStep} onFinish={onCLose} />
+          </StepWrapper>
+        </div>
       </DialogContent>
+
     </Dialog>
   );
 }

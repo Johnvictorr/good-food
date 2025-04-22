@@ -4,7 +4,6 @@ type AddressData = {
   name: string;
   phone: string;
   endereco: string;
-  cep: string;
 };
 
 type AddressStore = {
@@ -18,7 +17,6 @@ export const useAddressStore = create<AddressStore>((set) => ({
     name: "",
     phone: "",
     endereco: "",
-    cep: "",
   },
   setForm: (data) =>
     set((state) => ({
@@ -30,7 +28,6 @@ export const useAddressStore = create<AddressStore>((set) => ({
         name: "",
         phone: "",
         endereco: "",
-        cep: "",
       },
     }),
 }));

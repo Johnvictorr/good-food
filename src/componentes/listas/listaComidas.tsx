@@ -36,7 +36,7 @@ import { TbBottle } from "react-icons/tb";
   export default function ListaComidas({ name, data }: Props) {
     return (
       <section className="rounded-xl p-4">
-        <h2 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-lg">
+        <h2 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg">
           {name}
         </h2>
         <div className="grid grid-cols-1 gap-2">

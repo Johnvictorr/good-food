@@ -77,7 +77,7 @@ export default function FoodSelected() {
 
             <div className="w-full md:w-1/3 justify-center flex flex-col">
 
-                <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-base text-white">{item?.name}</h1>
+                <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg text-white">{item?.name}</h1>
 
                 <div className="flex items-center justify-center">
                     <Image className="w-69 h-69 rounded-full border-2 border-gray-300" src={item?.image || "/fotoComida.png"} alt="Imagem" width={300} height={300}/>
@@ -114,12 +114,12 @@ export default function FoodSelected() {
             </div>
             
             <div className="w-full md:w-1/3 justify-center flex flex-col">
-                <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 text-shadow-base text-white">Informations</h1>
+                <h1 className="flex items-center bg-red-600 w-auto mb-4 p-2 justify-center rounded-t-full text-lg md:text-2xl font-bold transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg text-white">Informations</h1>
 
                 <div className="flex flex-col text-xs md:text-sm bg-gray-200 p-5 rounded-lg mb-5 gap-5">
-                    <h1>Product Value: <span className="font-bold">{`R$ ${item?.price}`}</span></h1>
+                    <h1>Product Value: <span className="font-bold">{`R$ ${item?.price.toFixed(2)}`}</span></h1>
 
-                    <h1> Total: <span className="font-bold">{`R$ ${total.toFixed(2)}`}</span></h1>
+                    <h1>Total Products: <span className="font-bold">{`R$ ${total.toFixed(2)}`}</span></h1>
                 </div>
 
                 <label htmlFor="observation">Description</label>

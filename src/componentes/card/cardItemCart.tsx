@@ -15,7 +15,7 @@ type Props = {
         <div className="flex justify-end mb-2">
           <button
             onClick={onRemove}
-            className="text-gray-400 hover:text-red-600 hover:cursor-pointer transition"
+            className="text-red-600 hover:text-white hover:bg-red-600 rounded-full hover:cursor-pointer transition duration-300 ease-in-out p-1"
             aria-label="Remover item"
           >
             <FiX size={18} />
