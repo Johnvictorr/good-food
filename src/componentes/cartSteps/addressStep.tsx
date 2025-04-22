@@ -15,16 +15,20 @@ function formatPhoneNumber(value: string) {
   return `(${onlyNums.slice(0, 2)}) ${onlyNums.slice(2, 7)}-${onlyNums.slice(7)}`;
 }
 
+/*
 function formatCep(value: string) {
   const onlyNums = value.replace(/\D/g, "").slice(0, 8);
   if (onlyNums.length <= 5) return onlyNums;
   return `${onlyNums.slice(0, 5)}-${onlyNums.slice(5)}`;
 }
+*/
 
 export default function AddressStep({ previousStep, nextStep }: Props) {
   const { form, setForm } = useAddressStore();
   const [phone, setPhone] = useState(form.phone);
+  /*
   const [cep, setCep] = useState(form.cep);
+  */
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ [e.target.name]: e.target.value });
@@ -42,11 +46,13 @@ export default function AddressStep({ previousStep, nextStep }: Props) {
     setForm({ phone: formatted });
   };
 
+  /*
   const handleCepChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatCep(e.target.value);
     setCep(formatted);
     setForm({ cep: formatted });
   };
+  */
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-gray-800">
