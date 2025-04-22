@@ -35,7 +35,6 @@ export default function ConfirmStep({ onFinish, previousStep }: Props) {
   Name: ${form.name}
   Phone: ${form.phone}
   Adress: ${form.endereco}
-  CEP: ${form.cep}
   
   📦 *Product Order:*
   ${produtos}
@@ -64,7 +63,6 @@ export default function ConfirmStep({ onFinish, previousStep }: Props) {
         <p><strong>Name:</strong> {form.name}</p>
         <p><strong>Phone:</strong> {form.phone}</p>
         <p><strong>Address:</strong> {form.endereco}</p>
-        <p><strong>CEP:</strong> {form.cep}</p>
       </div>
 
       <h2 className="text-lg font-semibold mt-4">🧾 Order Items</h2>
