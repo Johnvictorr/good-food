@@ -35,4 +35,11 @@ yarn dev
 ```
 O projeto estará disponível em http://localhost:3000
 
-## Para mais detalhes do repositório, acesse a [wiki](https://github.com/Johnvictorr/good-food/wiki)
+## 👥 Colaboradores
+
+| Nome    | GitHub |
+|---------|--------|
+| Gustavo Vinicius Santana | [@Gustavo-Vinicius-Santana](https://github.com/Gustavo-Vinicius-Santana) |
+| John Victor | [@Johnvictorr](https://github.com/Johnvictorr) |
+
+##### Para mais detalhes do repositório, acesse a [wiki](https://github.com/Johnvictorr/good-food/wiki)
