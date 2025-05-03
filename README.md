@@ -4,14 +4,11 @@ Sistema de delivery online para uma lanchonete, desenvolvido com **Next.js**, **
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Principais Tecnologias Utilizadas
 
-- [Next.js](https://nextjs.org/) — Framework React full-stack
-- [React.js](https://react.dev/) — Biblioteca para interfaces de usuário
-- [TypeScript](https://www.typescriptlang.org/) — Tipagem estática para JavaScript
-- [Tailwind CSS](https://tailwindcss.com/) — Utilitários CSS para estilização rápida
-- [Zustand](https://github.com/pmndrs/zustand) — Gerenciamento de estado global simples e escalável
-- [shadcn/ui](https://ui.shadcn.com/) — Componentes estilizados com acessibilidade e design moderno
+![Next.js](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
 ---
 
@@ -37,3 +34,5 @@ npm run dev
 yarn dev
 ```
 O projeto estará disponível em http://localhost:3000
+
+## Para mais detalhes do repositório, acesse a [wiki](https://github.com/Johnvictorr/good-food/wiki)
