@@ -1,4 +1,4 @@
-# 🍔 Lanchonete Delivery - Frontend
+# 🍔 GOOD-FOOD Delivery - Frontend
 
 Sistema de delivery online para uma lanchonete, desenvolvido com **Next.js**, **React.js**, **Tailwind CSS**, **TypeScript**, **Zustand** para gerenciamento de estado global, e **shadcn/ui (ChadCN)** para componentes estilizados e acessíveis.
 
